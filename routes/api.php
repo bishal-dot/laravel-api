@@ -5,11 +5,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Api;
 use App\Models\Comments;
+use App\Models\Products;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+// route for api model
 Route::get('/users', function(Request $request){
     return Api::all();
 });
@@ -23,11 +25,7 @@ Route::post('/add/users', function(Request $request){
     return 'mw bishal ho';
 });
 
-Route::delete('/remove/user{id}', function($id){
-    Api::destroy($id);
-});
-
-
+// route for comment 
 Route::get('/comments', function(){
     return Comments::all();
 });
@@ -44,4 +42,21 @@ Route::post('/add/comment', function(Request $request){
 Route::delete('/delete/comment/{id}', function($id){
     Comments::destroy($id);
     return 'bishwash daka';
+});
+
+// route for product 
+Route::get('/products', function(){
+    return Products::all();
+});
+
+Route::post('/add/product', function(Request $request){
+    Products::create(
+        $request->all(),
+    );
+    return 'product added succesfully';
+});
+
+Route::delete('/delete/product/{id}', function($id){
+    Products::destroy($id);
+    return 'product deleted';
 });
