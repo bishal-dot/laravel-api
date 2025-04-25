@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('apis', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name',200);
-            $table->string('email',300);
-            $table->string('address');
+            $table->unsignedBigInteger('user_id');
+            $table->string('comment');
+            $table->string('react');
+            $table->boolean('unread')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('apis');
+        Schema::dropIfExists('comments');
     }
 };

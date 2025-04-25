@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Api extends Model
+class Comments extends Model
 {
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'address'
+        'user_id',
+        'comment',
+        'react'
     ];
 }
