@@ -60,3 +60,15 @@ Route::delete('/delete/product/{id}', function($id){
     Products::destroy($id);
     return 'product deleted';
 });
+
+Route::post('/update/product/{id}', function( Request $request, $id){
+    $CurrentProduct = Products::find($id);
+    $CurrentProduct->update($request->all());
+    return 'Product Updated';
+});
+
+Route::get('/search/product/{keyword}', function($keyword){
+    $SearchedProduct = Products::where('title','like','%' . $keyword . '%')->select('id','title','description','price')->get();
+    return $SearchedProduct;
+
+});

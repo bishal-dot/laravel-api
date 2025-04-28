@@ -12,8 +12,13 @@ class Products extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'p_id',
-        'p_name',
-        'price'
+        'title',
+        'description',
+        'category',
+        'price',
+        'rating',
+        'stock',
+        'brand',
+        'weight'
     ];
 }
