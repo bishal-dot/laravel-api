@@ -70,5 +70,4 @@ Route::post('/update/product/{id}', function( Request $request, $id){
 Route::get('/search/product/{keyword}', function($keyword){
     $SearchedProduct = Products::where('title','like','%' . $keyword . '%')->select('id','title','description','price')->get();
     return $SearchedProduct;
-
 });
