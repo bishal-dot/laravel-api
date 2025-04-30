@@ -29,7 +29,7 @@ class ProductsFactory extends Factory
         return [
             'title'        => fake()->sentence(),
             'description'  => fake()->paragraph(),
-            'category'     => fake()->randomElement($categories),
+            'category'     => $this->$categories[rand(0,4)],
             'price'        => fake()->randomFloat(2,5, 100),
             'rating'       => fake()->randomFloat(2,1, 5),
             'stock'        => fake()->numberBetween(0, 100),
