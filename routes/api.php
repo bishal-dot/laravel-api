@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
@@ -67,3 +68,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::resource('products', ProductsController::class);
+
+Route::post('/user/register',[AuthController::class,'register']);
+Route::post('/user/login', [AuthController::class,'login']);
+
+Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::get('/user/logout/{id}', [AuthController::class,'logout']);
+});
